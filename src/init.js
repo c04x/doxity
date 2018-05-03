@@ -11,8 +11,8 @@ import { DOXITYRC_FILE } from './constants';
 export default function (args) {
   const { source, target } = args;
   // TODO check folder exists...
-  const absoluteTarget = `${process.env.PWD}/${target}`;
-  const tmpTarget = path.resolve(`${process.env.PWD}/${target}/../doxity-tmp-${new Date()}`);
+  const absoluteTarget = `${process.cwd()}/${target}`;
+  const tmpTarget = path.resolve(`${process.cwd()}/${target}/../doxity-tmp-${new Date()}`);
   // clear the target dir
   clearDirectory(absoluteTarget)
   .then(() => {
@@ -48,7 +48,7 @@ export default function (args) {
     npmInstall.stderr.pipe(process.stderr);
     npmInstall.on('close', () => {
       clearInterval(spinner);
-      const doxityrcFile = `${process.env.PWD}/${DOXITYRC_FILE}`;
+      const doxityrcFile = `${process.cwd()}/${DOXITYRC_FILE}`;
       // overwrite doxityrc file
       if (fs.existsSync(doxityrcFile)) { fs.unlinkSync(doxityrcFile); }
       fs.writeFileSync(doxityrcFile, `${JSON.stringify(args, null, 2)}\n`);

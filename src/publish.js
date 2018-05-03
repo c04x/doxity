@@ -5,9 +5,9 @@ import { clearDirectory } from './helpers';
 
 export default function ({ target, out }) {
   // TODO check folder exists...
-  const cwd = `${process.env.PWD}/${target}`;
+  const cwd = `${process.cwd()}/${target}`;
   const outputFolder = `${cwd}/public`;
-  const destFolder = `${process.env.PWD}/${out}`;
+  const destFolder = `${process.cwd()}/${out}`;
   clearDirectory(destFolder).then(() => {
     const runDev = childProcess.spawn('npm', ['run', 'build'], { cwd });
     runDev.stdout.pipe(process.stdout);
