@@ -19,9 +19,13 @@ export default function (src) {
           contracts: Object.keys(res).reduce((o, k) => {
             const { metadata, ...data } = res[k].rawData;
             try {
-              const parsed = JSON.parse(metadata);
-              const fN = Object.keys(parsed.settings.compilationTarget)[0];
-              data.fileName = fN.indexOf(process.cwd()) === 0 ? fN : `${process.cwd()}/node_modules/${fN}`;
+              const parsed = JSON.parse(metadata || '{}');
+
+              // I don't know what this code is about at it works on my environment without it
+              // const fN = Object.keys(parsed.settings.compilationTarget)[0];
+              // data.fileName = fN.indexOf(process.cwd()) === 0 ? fN : `${process.cwd()}/node_modules/${fN}`;
+              data.fileName =  res[k].sourcePath;
+
               data.output = parsed.output;
             } catch (e) {
               console.log(`⚠️ Error parsing Contract: ${k}`);
