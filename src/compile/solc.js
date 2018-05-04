@@ -7,7 +7,7 @@ import compile from 'truffle-compile';
 export default function (src) {
   // detect if we're in a truffle project
   return new Promise((resolve) => {
-    const isTruffleProject = fs.existsSync(`${process.cwd()}/truffle.js`);
+    const isTruffleProject = fs.existsSync(`${process.cwd()}/truffle.js`) || fs.existsSync(`${process.cwd()}/truffle-config.js`);
     console.log(isTruffleProject? 'using truffle' : 'no truffle config file found, using solc directly');
     if (isTruffleProject) {
       const config = Config.default();

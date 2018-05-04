@@ -4,9 +4,9 @@
   "description": "Documentation Generator for Solidity Contracts",
   "main": "lib/index.js",
   "scripts": {
-    "dev": "./node_modules/.bin/mocha --watch --compilers js:babel-register",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-register",
-    "compile": "rm -rf lib/* && babel src -d lib && chmod +x ./lib/bin/doxity.js",
+    "dev": "mocha --watch --compilers js:babel-register",
+    "test": "mocha --compilers js:babel-register",
+    "compile": "rimraf lib/* && babel src -d lib && chmod +x ./lib/bin/doxity.js",
     "prepublish": "npm run compile"
   },
   "bin": {
@@ -38,7 +38,7 @@
     "mkdirp": "^0.5.1",
     "request": "^2.79.0",
     "rimraf": "^2.5.4",
-    "tar.gz": "^1.0.5",
+    "tar": "^4.4.2",
     "toml": "^2.3.0",
     "tomlify-j0.4": "^1.0.1",
     "truffle-compile": "git://github.com/romaric-juniet/truffle-compile.git#8dd829b61d2bef0937ebbf973f51d4bd63305a16",
