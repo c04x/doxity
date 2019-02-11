@@ -41,7 +41,7 @@
     "tar": "^4.4.2",
     "toml": "^2.3.0",
     "tomlify-j0.4": "^1.0.1",
-    "truffle-compile": "git://github.com/romaric-juniet/truffle-compile.git#8dd829b61d2bef0937ebbf973f51d4bd63305a16",
+    "truffle-compile": "git://github.com/c04x/truffle-compile.git#62d07a9d9da6c67080ad347db4e494563c68abe3",
     "truffle-config": "1.0.4",
     "truffle-resolver": "4.0.3"
   }
